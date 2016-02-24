@@ -131,18 +131,8 @@ var Stepmaster = React.createClass({
 		if(StepStore.getFilteredLength() < this.props.addAllThreshold){
 			addAllEnabled = true;
 		}
-		return (
-			<Modal
-				isOpen={this.props.stepmasterIsVisible}
-				onRequestClose={this.props.onStepmasterClick}
-				style={modalStyle}>
-				
-			<span 	className="close"
-					style={closeSymbolStyle}
-					onClick={this.props.onStepmasterClick}>&times;</span>
-					
+		return (	
 			<div id="stepmaster-container" style={{margin: 'auto', width: this.props.width}}>
-			<h4 style={{marginTop: '0px'}}>Select steps to add to your worklist</h4>
 	      	<Table
 	        	rowsCount={StepStore.getFilteredLength()}
 	        	rowHeight={30}
@@ -236,13 +226,6 @@ var Stepmaster = React.createClass({
 	        	    } />
 	      	</Table>
 	      	</div>
-	      	<div>
-		      	<button 
-		      		style={{margin: '10px auto 0px auto', display: 'block'}}
-		      		onClick={this.props.onStepmasterClick} 
-		      		className="btn btn-primary">Close</button>
-	      	</div>
-	      	</Modal>
 		);
 	}
 });
