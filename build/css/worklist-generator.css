@@ -1,0 +1,149 @@
+html, body, #react-application {
+	height: 100%;
+	width: 100%;
+}
+body {
+  background-color: #e6e6e6;
+}
+.datepicker {
+	-webkit-box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.4);
+	box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.4);
+}
+.loader {
+  margin: auto;
+  text-align: center;
+}
+
+.control-label {
+	font-weight: bold;
+}
+
+.stepmasterButton .public_fixedDataTableCell_cellContent, .worklistTableBtn .public_fixedDataTableCell_cellContent{
+  padding: 1px;
+}
+.worklistTable .public_fixedDataTableCell_cellContent{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.public_fixedDataTableCell_cellContent{
+  white-space: nowrap;
+}
+
+
+/*vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*/
+/* Glyphicons */
+.glyphicon-plus-sign{
+  color: #6897BB;
+}
+.glyphicon-plus-sign.disabled{
+  color: #c2d5e3;
+}
+.glyphicon-plus-sign:hover{
+  color: #0079d6;
+  cursor: pointer;
+}
+.glyphicon-plus-sign.disabled:hover{
+  cursor: not-allowed;
+  color: #c2d5e3;
+}
+.glyphicon-minus-sign {
+	color: #e7b1b1;
+}
+.glyphicon-minus-sign:hover {
+	color: #c53e3e;
+	cursor: pointer;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+
+
+/*vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv*/
+/* DATA TABLE */
+.stepRow_process.inactive .public_fixedDataTableCell_main {
+  color: #cfd0d1;
+}
+
+.stepRow_scan.inactive .public_fixedDataTableCell_main {
+  color: #e1dec1;
+}
+
+
+.stepRow_scan .public_fixedDataTableCell_main {
+	background-color: #fff7a3;
+}
+.stepRow_scan:hover .public_fixedDataTableCell_main {
+	background-color: #f2ecb1;
+}
+.stepRow_scan.worklistactive .public_fixedDataTableCell_main{
+  background-color: #ffd700;
+}
+
+
+.stepRow_process .public_fixedDataTableCell_main {
+  background-color: #fff;
+
+}
+.stepRow_process:hover .public_fixedDataTableCell_main {
+  background-color: #F6F7F8;
+}
+
+.public_fixedDataTableCell_main {
+  border-bottom: solid 1px #D3D3D3;
+}
+
+.stepmasterRow:hover {
+  cursor: pointer;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+
+
+.ReactModal__Overlay {
+  opacity: 0;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+  -webkit-transition: opacity 300ms ease-in;
+  -moz-transition: opacity 300ms ease-in;
+  -o-transition: opacity 300ms ease-in;
+}
+
+.ReactModal__Content {
+    transform: translate(-50%,-55%)
+}
+
+.ReactModal__Content--after-open {
+  transform: translate(-50%,-50%);
+  transition: transform 300ms ease;
+}
+
+
+/* IE REDIRECT PAGE */
+.link {
+  color: #666666;
+}
