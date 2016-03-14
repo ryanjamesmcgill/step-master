@@ -31,6 +31,7 @@ var filters = {
 			"name": "Worklist Status"
 		}
 };
+var loadingStatus = true;
 
 function setMasterSteps(stepArray){
 	for(var i=0; i<stepArray.length; i++){
@@ -109,6 +110,9 @@ function setWorklistPair(processStep, scanStep){
 	);
 	stepObj.scanstep = scanStep;
 }
+function setLoadingStatus(newLoadingStatus){
+	loadingStatus = newLoadingStatus;
+}
 function emitChange(){
 	StepStore.emit(CHANGE_EVENT);
 }
@@ -161,6 +165,9 @@ var StepStore = assign({}, EventEmitter.prototype, {
 	},
 	getFilters: function(){
 		return filters;
+	},
+	getLoadStatus: function(){
+		return loadingStatus;
 	}
 });
 
@@ -186,6 +193,9 @@ function handleAction(action){
 			setWorklistPair(action.processStep, action.scanStep);
 			emitChange();
 			break;
+		case 'set_loading_status':
+			setLoadingStatus(action.loadingStatus);
+			emitChange();
 		default: // .. do nothing
 	}
 }

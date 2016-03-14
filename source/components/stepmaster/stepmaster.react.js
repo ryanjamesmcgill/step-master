@@ -6,7 +6,6 @@ var StepmasterHeader = require('./stepmasterheader.react');
 var StepmasterText = require('./stepmastertext.react');
 var StepmasterButton = require("./stepmasterbutton.react");
 var StepmasterHeaderButton = require("./stepmasterheaderbutton.react");
-var Modal = require('react-modal');
 var FixedDataTable = require('fixed-data-table');
 var Table = FixedDataTable.Table;
 var Column = FixedDataTable.Column;
@@ -144,17 +143,6 @@ var Stepmaster = React.createClass({
 	        	onColumnResizeEndCallback={this._onColumnResizeEnd}
 	        	rowClassNameGetter={this._rowClassNameGetter}>
 	        	
-	        	<Column
-	     			columnKey="button"
-	     			width={this.state.columnWidths.button}
-	     			isResizable={false}
-	        	    header={<StepmasterHeaderButton enabled={addAllEnabled} />}
-	        	    cell={	
-        	    	function(props){ 
-    	    			return (<StepmasterButton 
-    	    	        	onCellClick={self._onCellClick}
-    	    				stepObj={StepStore.getMasterStepAt(props.rowIndex)}/> ); } 
-	        	    	} />
 	        	<Column
 	     			columnKey="processid"
 	     			width={this.state.columnWidths.processid}

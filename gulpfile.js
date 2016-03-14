@@ -21,7 +21,7 @@ gulp.task('default', function(){
 	return browserify('./source/app.js')
 			.transform(babelify, {presets: "react"})
 			.bundle()
-			.pipe(source('worklist-generator.js'))
+			.pipe(source('step-master.js'))
 			.pipe(gulp.dest('./build/'));
 });
 

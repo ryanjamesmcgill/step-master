@@ -1,6 +1,8 @@
 var React = require('react');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var Stepmaster = require('./stepmaster/stepmaster.react');
+var LoadingModal = require('./stepmaster/loadingmodal.react');
+var StepStore = require('../stores/StepStore');
 
 
 var navStyle={
@@ -11,9 +13,17 @@ var navStyle={
     zIndex: 1
 	
 };
+var footerStyle = {
+    height: 30,
+    paddingTop: 10,
+    margin: 'auto',
+    color: '#777',
+    fontSize: 12,
+    fontStyle: 'italic'
+};
 var containerStyle = {
     backgroundColor: '#FFFFFF',
-    paddingTop: 10,
+    paddingTop: 25,
     paddingBottom: 10,
     marginBottom: 10,
     paddingLeft: 15,
@@ -23,20 +33,15 @@ var containerStyle = {
 };
     
 var Application = React.createClass({
-	getDefaultProps: function(){
-		return ({
-			worklistTableHeight: 600
-		});
-	},
 	getInitialState: function(){
 		return {
-			stepmasterIsVisible: false,
-			loadfileIsVisible: false,
+			loadingModalVisible: StepStore.getLoadStatus(),
 			containerWidth: 970
 		};
 	},
 	componentDidMount: function(){
 		window.addEventListener('resize', this._onResize);
+		StepStore.addChangeListener(this._onStepStoreChange);
 		
 		var width = this.refs.container.clientWidth;
 		this.setState({
@@ -45,6 +50,7 @@ var Application = React.createClass({
 	},
 	componentWillUnmount: function() {
 		window.removeEventListener('resize', this._onResize);
+		StepStore.removeChangeListener(this._onStepStoreChange);
 	},
 	_onResize: function(e) {
 		var width = this.refs.container.clientWidth;
@@ -52,15 +58,20 @@ var Application = React.createClass({
 			containerWidth: width
 		});
 	},
-	_onStepmasterClick: function(e){
+	_onStepStoreChange: function(){
 		this.setState({
-			stepmasterIsVisible: !(this.state.stepmasterIsVisible)
+			loadingModalVisible: StepStore.getLoadStatus()
 		});
 	},
-	_onLoadfileClick: function(e){
-		this.setState({
-			loadfileIsVisible: !(this.state.loadfileIsVisible)
-		});	
+	_getWidth: function(){
+		console.log('get width');
+		var width;
+		if(this.refs.container){
+			width = this.refs.container.clientWidth - 50;
+		} else {
+			width = 500;
+		}
+		return width;
 	},
 	render: function(){
 		return ( 
@@ -79,11 +90,16 @@ var Application = React.createClass({
 				<Stepmaster
 					stepmasterIsVisible={this.state.stepmasterIsVisible}
 					onStepmasterClick={this._onStepmasterClick} 
-					width={Math.min(window.innerWidth-200,1150)}
-					height={window.innerHeight - 200}
+					width={this._getWidth()}
+					height={800}
 					addAllThreshold={20}/>
+			<div id="footer" style={footerStyle}>
+		      		<p className="text-center">created by Ryan McGill - r.mcgill@samsung.com</p>
+		    </div>
 			</div>
 			</div>
+			<LoadingModal 
+				visible = {this.state.loadingModalVisible} />
 		</div>
 		);
 	}

@@ -42,10 +42,19 @@ function setWorklistPair(processStep, scanStep){
     AppDispatcher.dispatch(action);
 }
 
+function setLoadingStatus(loadingStatus){
+    var action = {
+        type: 'set_loading_status',
+        loadingStatus: loadingStatus
+    };
+    AppDispatcher.dispatch(action);
+}
+
 module.exports = {
 	setMasterSteps: setMasterSteps,
 	setFilter: setFilter,
 	addStepToWorklist: addStepToWorklist,
 	removeStepFromWorklist: removeStepFromWorklist,
-	setWorklistPair: setWorklistPair
+	setWorklistPair: setWorklistPair,
+	setLoadingStatus: setLoadingStatus
 };
